@@ -20,13 +20,19 @@
         <RootNamespace>Gotho.BlazorPdf</RootNamespace>
     </PropertyGroup>
 
-    <Target Name="BuildWebAssets" BeforeTargets="PrepareForPublish">
+    <Target Name="CompileTypeScript" BeforeTargets="Build">
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
-                Command="npm run ts" />
+              Command="npm run ts" />
+    </Target>
+
+    <Target Name="MinifyJavaScript" BeforeTargets="Build" AfterTargets="CompileTypeScript">
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
-                Command="npm run ts-min" />
+              Command="npm run ts-min" />
+    </Target>
+
+    <Target Name="MinifyCss" BeforeTargets="Build">
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
-                Command="npm run css" />
+              Command="npm run css" />
     </Target>
 
     <ItemGroup>
