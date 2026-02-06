@@ -21,15 +21,18 @@
     </PropertyGroup>
 
     <Target Name="CompileTypeScript" BeforeTargets="Build">
-        <Exec Command="npm run ts" />
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
+              Command="npm run ts" />
     </Target>
 
     <Target Name="MinifyJavaScript" BeforeTargets="Build" AfterTargets="CompileTypeScript">
-        <Exec Command="npm run ts-min" />
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
+              Command="npm run ts-min" />
     </Target>
 
     <Target Name="MinifyCss" BeforeTargets="Build">
-        <Exec Command="npm run css" />
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
+              Command="npm run css" />
     </Target>
 
     <ItemGroup>
