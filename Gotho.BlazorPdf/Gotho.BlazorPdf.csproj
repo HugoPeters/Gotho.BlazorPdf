@@ -36,7 +36,8 @@
 
         <ItemGroup>
             <_GeneratedAssets Include="wwwroot/blazorpdf.min.lib.module.js"
-                              Condition="Exists('wwwroot/blazorpdf.min.lib.module.js')" />
+                              Condition="Exists('wwwroot/blazorpdf.min.lib.module.js')"
+                              Exclude="@(Content)" />
             <Content Include="@(_GeneratedAssets)" />
         </ItemGroup>
 
