@@ -4,9 +4,8 @@
   "description": "A simple PDF viewer component for use with Blazor",
   "main": "index.js",
   "scripts": {
-    "ts": "npx esbuild Ts/PdfViewer.ts --bundle --format=esm --target=esnext --outfile=wwwroot/blazorpdf.js --keep-names",
-    "css": "npx clean-css-cli -o wwwroot/blazorpdf.min.css wwwroot/blazorpdf.css",
-    "ts-min": "npx uglifyjs wwwroot/blazorpdf.js -o wwwroot/blazorpdf.min.js "
+    "ts": "npx esbuild Ts/PdfViewer.ts --bundle --format=esm --target=esnext --minify --outfile=wwwroot/blazorpdf.min.lib.module.js",
+    "css": "npx clean-css-cli -o wwwroot/blazorpdf.min.css wwwroot/blazorpdf.css"
   },
   "repository": {
     "type": "git",

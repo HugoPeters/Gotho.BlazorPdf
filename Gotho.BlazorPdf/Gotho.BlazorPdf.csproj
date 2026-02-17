@@ -20,19 +20,26 @@
         <RootNamespace>Gotho.BlazorPdf</RootNamespace>
     </PropertyGroup>
 
-    <Target Name="CompileTypeScript" BeforeTargets="Build">
+    <Target Name="BuildBlazorPdfAssets"
+            BeforeTargets="RegisterGeneratedAssets">
+
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
               Command="npm run ts" />
-    </Target>
 
-    <Target Name="MinifyJavaScript" BeforeTargets="Build" AfterTargets="CompileTypeScript">
-        <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
-              Command="npm run ts-min" />
-    </Target>
-
-    <Target Name="MinifyCss" BeforeTargets="Build">
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)"
               Command="npm run css" />
+    </Target>
+
+    <Target Name="RegisterGeneratedAssets"
+            BeforeTargets="ResolveProjectStaticWebAssets"
+            Condition="'$(DesignTimeBuild)' != 'true'">
+
+        <ItemGroup>
+            <_GeneratedAssets Include="wwwroot/blazorpdf.min.lib.module.js"
+                              Condition="Exists('wwwroot/blazorpdf.min.lib.module.js')" />
+            <Content Include="@(_GeneratedAssets)" />
+        </ItemGroup>
+
     </Target>
 
     <ItemGroup>

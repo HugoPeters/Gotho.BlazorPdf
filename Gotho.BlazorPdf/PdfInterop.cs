@@ -4,7 +4,7 @@ using Microsoft.JSInterop;
 internal class PdfInterop(IJSRuntime jsRuntime) : IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> js =
-        new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Gotho.BlazorPdf/blazorpdf.min.js").AsTask());
+        new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Gotho.BlazorPdf/blazorpdf.min.lib.module.js").AsTask());
 
     public async Task InitializeAsync(object objRef, Pdf pdf, bool singlePageMode, bool useProjectWorker)
     {
