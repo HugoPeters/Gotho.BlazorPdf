@@ -28,14 +28,14 @@ public class Pdf
 
     public string? Password { get; private set; } = null;
 
-    public void UpdateUrl(string? url)
+    public void UpdateUrl(string? url, bool explicitIsUrl = false)
     {
         Url = url;
 
         if (string.IsNullOrWhiteSpace(url))
             Source = PdfSource.Base64;
         else
-            Source = Url.IsProbablyUrl()
+            Source = (Url.IsProbablyUrl() || explicitIsUrl)
                 ? PdfSource.Url
                 : Url.IsProbablyBase64()
                     ? PdfSource.Base64

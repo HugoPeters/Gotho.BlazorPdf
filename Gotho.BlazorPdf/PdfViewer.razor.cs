@@ -166,7 +166,7 @@ public partial class PdfViewer : ComponentBase
     /// Loads a PDF from the given URL, can be used as an alternative to the <c>Url</c> parameter.
     /// </summary>
     /// <param name="url">This can be a URL or a Base64 string</param>
-    public async Task LoadPdfAsync(string? url = null)
+    public async Task LoadPdfAsync(string? url = null, bool explicitIsUrl = false)
     {
         if (Error is not null && Error.ErrorType == PdfErrorType.PasswordRequired && string.IsNullOrEmpty(PdfPassword))
         {
@@ -176,7 +176,7 @@ public partial class PdfViewer : ComponentBase
         }
 
         if (url is not null)
-            PdfFile.UpdateUrl(url);
+            PdfFile.UpdateUrl(url, explicitIsUrl);
         
         PdfFile.UpdatePassword(PdfPassword);
         Loading = true;
