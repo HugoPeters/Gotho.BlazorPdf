@@ -352,7 +352,7 @@ function getDocumentInit(pdfDto: PdfState) {
     if (pdfDto.password)
         documentInit.password = pdfDto.password;
 
-    documentInit.withCredentials = true;
+    documentInit.withCredentials = false;
 
     return documentInit;
 }
